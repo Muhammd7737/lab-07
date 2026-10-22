@@ -54,4 +54,42 @@ class FormulaZeroTest {
             .assertExists()
     }
 
+    @Test
+    fun navigate_to_drivers_add_clear_and_return_home() {
+        // navigate to race screen
+        composeTestRule
+            .onNodeWithTag("driversButton")
+            .performClick()
+
+        // verify race screen
+        composeTestRule
+            .onNodeWithText("FormulaZero Drivers")
+            .assertExists()
+
+        // enter race location
+        composeTestRule
+            .onNodeWithTag("driverInput")
+            .performTextInput("USA")
+
+        // add race location
+        composeTestRule
+            .onNodeWithTag("addDriverButton")
+            .performClick()
+
+        // verify race appears
+        composeTestRule
+            .onNodeWithText("USA")
+            .assertExists()
+
+        // return to home screen
+        composeTestRule
+            .onNodeWithTag("backButton")
+            .performClick()
+
+        // verify return to home screen
+        composeTestRule
+            .onNodeWithText("FormulaZero Home")
+            .assertExists()
+    }
+
 }
